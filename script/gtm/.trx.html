@@ -1,0 +1,37 @@
+<!-- interLayer initialization -->
+<script>
+  (function(_scope, _anchor, _queue) {
+    const context_scope = _scope || window;
+    const anchor = _anchor || document;
+    const queue_name = _queue || 'dataLayer';
+    const queue = context_scope[queue_name] = context_scope[queue_name] || [];
+
+    // build interLayer instance
+    const interLayer = {
+      context: context_scope,
+      anchor: anchor,
+      queue: queue,
+    };
+    // connecting document event into interLayer triggering
+    interLayer.connect = (function() {
+
+    });
+    // registering interLayer subscriptions
+    interLayer.register = (function() {
+
+    });
+    // 
+    interLayer.sub = (function() {
+
+    });
+    // 
+    interLayer.pub = (function() {
+
+    });
+    // subscription definitions
+    interLayer.subscriptions = {
+
+    };
+
+  })(window, document, 'dataLayer');
+</script>

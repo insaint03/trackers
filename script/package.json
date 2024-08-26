@@ -1,0 +1,20 @@
+{
+  "name": "trackers-script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "mocha --require @babel/register"
+  },
+  "author": "",
+  "license": "CC-BY-NC-SA-4.0",
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-runtime": "^7.24.7",
+    "@babel/preset-env": "^7.25.2",
+    "@babel/register": "^7.24.6",
+    "mocha": "^10.7.0"
+  }
+}
