@@ -1,0 +1,75 @@
+<!-- trx initialization -->
+<script>
+  
+  (function() {
+    // initialization values
+    const context_scope = window;
+    const anchor = context_scope.document;
+    const queue = context_scope.dataLayer;
+
+    // common features
+    const fire = function(event, options){ 
+      const params = Object.assign({}, options, {event: event});
+      if(queue !== window.dataLayer) {
+        queque.push(params);
+      }
+      window.dataLayer.push(params);
+    };
+    const warn = function() { 
+      window.console.warn('dataLayer deligated'); 
+    };
+
+    // build interLayer instance
+    const interLayer = {
+      context: context_scope,
+      anchor: anchor,
+      queue: queue,
+      // connections map event with retrieval functions
+      connections: {},
+      // subscriptions map sub_id and its instances
+      subscriptions: {},
+    };
+    // interLayer firing function
+    interLayer.pub = function(event) {
+      // trigger event retrieval
+      const retrieval = this.connections[event];
+      let options = null;
+      switch(typeof retrieval) {
+        case 'function':
+          // retrieve data then fire dataLayer event
+          return fire(event, retrieval.apply(this, []));
+        case 'object':
+          // fire data
+          return fire(event, retrieval);
+        default:
+          fire(event);
+          warn('event not found');
+          return;
+      }
+    }
+
+    interLayer.register = function(subscriber) {
+      // unique subscriber id
+      const sub_id = subscriber.id;
+      // check if subscriber already exists
+      if(this.subscriptions[sub_id]) {
+        warn('subscriber already exists');
+        return;
+      }
+    }
+
+    // register / sub / pub will be handled by dataLayer
+    interLayer.register = warn;
+    interLayer.sub = warn;
+    interLayer.pub = warn;
+    
+    // Subcriber class
+    class Subcriber {
+      constructor(id) {
+        
+      }
+    }
+
+
+  })();
+</script>
